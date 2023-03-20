@@ -6,7 +6,7 @@ import time
 
 source_dir = r"C:\Python311\VeeamTask\source"
 destination_dir = r"C:\Python311\VeeamTask\target"
-#Delete funtion when delete a file/folders from source then its impact on target
+#Delete funtion when delete a file/folders from source then its impact on target.
 def delete(src_dir, rep_dir, log_writer):
     for root, dirs, files in os.walk(rep_dir):
         rel_dir = os.path.relpath(root, rep_dir)
