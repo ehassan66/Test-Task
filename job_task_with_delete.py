@@ -25,7 +25,6 @@ def delete(src_dir, rep_dir, log_writer):
                 print('removed ', file)
                 log_writer.write('removed '+ str(file)+'\n')
 
-
 #Copy and replace funtion from source directory to target directory.
 def copy_replace(src_dir, rep_dir, log_writer):
     for root, dirs, files in os.walk(src_dir):
@@ -44,6 +43,7 @@ def copy_replace(src_dir, rep_dir, log_writer):
 def sync(source_dir, destination_dir, log_file_name, sync_interval):
     while (True):
         print("synching at "+str(datetime.datetime.now()))
+        #Creation of log file
         with open(log_file_name, 'w') as log_writer:
             copy_replace(source_dir, destination_dir, log_writer)
             delete(source_dir, destination_dir, log_writer)
@@ -51,7 +51,6 @@ def sync(source_dir, destination_dir, log_file_name, sync_interval):
 
 # print(os.path.exists("C:\Python311\VeeamTask\folder1\."))
 # print(os.path.exists("C:\Python311\VeeamTask\folder1"))
-
 
 
 parser = argparse.ArgumentParser(description='Sync two folders periodically')
@@ -70,5 +69,5 @@ print(args.log)
 
 sync(args.source_dir, args.destination_dir, args.log, args.interval)
 
-# How to pas parameters in command line argument. 
+# How to pas parameters in command line argument with folder path, sync interval and log file
 #-l='abc.log' -i=10 "C:\Python311\VeeamTask\source" "C:\Python311\VeeamTask\target"
